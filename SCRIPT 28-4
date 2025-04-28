@@ -1,0 +1,48 @@
+CREATE DATABASE CELESTE_BD;
+USE CELESTE_BD;
+
+CREATE TABLE ESTUDIANTES (
+ID INT PRIMARY KEY,
+NOMBRE VARCHAR (50),
+NACIMIENTO DATE
+);
+
+SELECT * FROM ESTUDIANTES;
+
+INSERT INTO ESTUDIANTES (ID,NOMBRE,NACIMIENTO)
+VALUES (1, 'CELE','2006-10-22');
+
+INSERT INTO ESTUDIANTES (ID,NOMBRE,NACIMIENTO)
+VALUES (2,'NAMJOON','1987-09-14');
+
+
+delete from ESTUDIANTES where id = 1;
+
+create table materias (
+codigo int primary key identity(1,1),
+nombre varchar(50)
+);
+
+insert into  materias (nombre)
+values ('matematica');
+
+
+insert into  materias (nombre)
+values ('programacion ii');
+
+select * from materias;
+
+delete from materias where codigo = 1;
+
+
+create table inscripciones (
+estudianteID INT,
+materiaCODIGO INT,
+foreign key (estudianteID)references estudiantes (ID),
+foreign key (materiaCodigo) references materias (codigo)
+);
+
+select * from inscripciones;
+
+insert into inscripciones (estudianteID,materiaCODIGO)
+values (1,2);
